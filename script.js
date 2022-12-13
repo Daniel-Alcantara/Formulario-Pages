@@ -79,7 +79,6 @@ $(document).ready(function () {
             $(".value_anual_advanced").html("$15/mo")
             $(".box_render").css("border", "1px solid #eeee")
             plano_mes_ou_anual = "(Monthly)"
-            console.log(plano_mes_ou_anual)
         }
         else {
             $(".clique_box").css("justify-content", "end")
@@ -92,7 +91,6 @@ $(document).ready(function () {
             $(".value_anual_advanced").html("$150/yr")
             $(".box_render").css("border", "1px solid #eeee")
             plano_mes_ou_anual = "(Yearly)"
-            console.log(plano_mes_ou_anual)
         }
     })
     // fim seleção de plano
@@ -105,6 +103,14 @@ $(document).ready(function () {
         $(".form_2 h3").css("color", "#002248")
         $(".form_4").css("background-color", "unset")
         $(".form_4 h3").css("color", "white")
+        $(".check_box_design").find(".input_check input").prop('checked', false)
+        $(".check_box_design").css("border", "1px solid #eeee")
+        $(".check_box_design").css("background-color", "unset")
+        $(".box_render").css("border", "1px solid #eeee")
+        valor_online = 0
+        valor_storage = 0
+        valor_customizable = 0
+        numeral_valor_selecionado = 0
     })
     // fim change.
 
@@ -112,11 +118,11 @@ $(document).ready(function () {
     $(".box_render").click(function () {
         plano_selecionado = $(this).find(".box_option_title h4").html()
         valor_plano_selecionado = $(this).find(".box_option_title p").html()
-        $(this).css("border", "1px solid #726bc0")
+        $(this).css("border", "1px solid #726bc0");
+        
 
         $('.box_render').css("border", "1px solid #726bc0").not(this).css("border", "1px solid #eeee");
-        console.log(plano_selecionado)
-        console.log(valor_plano_selecionado)
+
         if (plano_selecionado == "Arcade" && plano_mes_ou_anual == "(Monthly)") {
             numeral_valor_selecionado = 9
         }
@@ -136,14 +142,13 @@ $(document).ready(function () {
             numeral_valor_selecionado = 150
         }
 
-        console.log("VALOR", numeral_valor_selecionado, typeof (numeral_valor_selecionado))
     })
     // fim plano selecionado
 
     // check qual serviço adicional foi selecionado.
 
     $(".check_box_design").click(function () {
-
+        console.log(this)
         if ($(this).css("border-color") == ("rgb(114, 107, 192)")) {
             $(this).css("border", "1px solid #eeee")
             $(this).css("background-color", "unset")
@@ -160,9 +165,6 @@ $(document).ready(function () {
                 customizable_profile = "false"
                 valor_customizable = 0
             }
-            console.log(online_service)
-            console.log(large_storage)
-            console.log(customizable_profile)
         }
         else {
             $(this).css("border", "1px solid #726bc0")

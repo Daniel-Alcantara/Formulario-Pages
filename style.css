@@ -319,6 +319,7 @@ input[type=number] {
 .box_princ_page4{
   background-color: #eeee;
   padding: .5rem 1.5rem;
+  border-radius: 10px;
 }
 
 .plano_selecionado{
