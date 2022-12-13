@@ -1,6 +1,6 @@
 $(document).ready(function () {
 
-    var plano_selecionado;
+    var plano_selecionado = "";
     var plano_mes_ou_anual = "(Monthly)"
     var valor_plano_selecionado;
     var online_service = "false"
@@ -37,22 +37,28 @@ $(document).ready(function () {
     })
 
     $(".next_page3").click(function () {
-        $(".container_add-ons_page3").css("display", "block")
-        $(".container_select_plan").css("display", "none")
-        $(".form_2").css("background-color", "unset")
-        $(".form_2 h3").css("color", "white")
-        $(".form_3").css("background-color", "#bee2f8")
-        $(".form_3 h3").css("color", "#002248")
-
-        if (plano_mes_ou_anual == "(Yearly)") {
-            $(".box_check_1 .value_checkbox p").html("+$10/yr")
-            $(".box_check_2 .value_checkbox p").html("+$20/yr")
-            $(".box_check_3 .value_checkbox p").html("+$20/yr")
+        if (plano_selecionado == "") {
+            alert("Selecione um plano");
         }
-        if (plano_mes_ou_anual != "(Yearly)") {
-            $(".box_check_1 .value_checkbox p").html("+$1/mo")
-            $(".box_check_2 .value_checkbox p").html("+$2/mo")
-            $(".box_check_3 .value_checkbox p").html("+$2/mo")
+        else {
+            $(".container_add-ons_page3").css("display", "block")
+            $(".container_select_plan").css("display", "none")
+            $(".form_2").css("background-color", "unset")
+            $(".form_2 h3").css("color", "white")
+            $(".form_3").css("background-color", "#bee2f8")
+            $(".form_3 h3").css("color", "#002248")
+
+            if (plano_mes_ou_anual == "(Yearly)") {
+                $(".box_check_1 .value_checkbox p").html("+$10/yr")
+                $(".box_check_2 .value_checkbox p").html("+$20/yr")
+                $(".box_check_3 .value_checkbox p").html("+$20/yr")
+            }
+            if (plano_mes_ou_anual != "(Yearly)") {
+                $(".box_check_1 .value_checkbox p").html("+$1/mo")
+                $(".box_check_2 .value_checkbox p").html("+$2/mo")
+                $(".box_check_3 .value_checkbox p").html("+$2/mo")
+
+            }
         }
     })
 
@@ -89,6 +95,7 @@ $(document).ready(function () {
             $(".value_anual_pro").html("$12/mo")
             $(".value_anual_advanced").html("$15/mo")
             $(".box_render").css("border", "1px solid #eeee")
+            plano_selecionado = ""
             plano_mes_ou_anual = "(Monthly)"
         }
         else {
@@ -101,6 +108,7 @@ $(document).ready(function () {
             $(".value_anual_pro").html("$120/yr")
             $(".value_anual_advanced").html("$150/yr")
             $(".box_render").css("border", "1px solid #eeee")
+            plano_selecionado = ""
             plano_mes_ou_anual = "(Yearly)"
         }
     })
@@ -125,6 +133,7 @@ $(document).ready(function () {
         online_service = "false"
         large_storage = "false"
         customizable_profile = "false"
+        plano_selecionado = ""
     })
     // fim change.
 
@@ -238,11 +247,15 @@ $(document).ready(function () {
         $(".plano_text h5").html(plano_selecionado + " " + plano_mes_ou_anual)
         $(".plano_value p").html(valor_plano_selecionado)
 
+
         if (plano_mes_ou_anual == "(Yearly)") {
             $(".valor_total_value p").html("+$" + valor_total + "/yr")
+            $(".valor_total_text p").html("Total (per yearly)")
         }
         else if (plano_mes_ou_anual != "(Yearly)") {
             $(".valor_total_value p").html("+$" + valor_total + "/mo")
+            $(".valor_total_text p").html("Total (per month)")
+
 
         }
 
